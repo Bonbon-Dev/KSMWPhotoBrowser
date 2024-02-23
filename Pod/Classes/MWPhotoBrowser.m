@@ -232,6 +232,14 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         _previousViewControllerBackButton = previousViewController.navigationItem.backBarButtonItem; // remember previous
         previousViewController.navigationItem.backBarButtonItem = newBackButton;
     }
+    
+    // back button
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *backIcon = [UIImage imageNamed:@"MWPhotoBrowser.bundle/UIBarButtonItemBack"];
+    [backButton setBackgroundImage:backIcon forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backActionClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBackButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = leftBackButton;
 
     // Toolbar items
     BOOL hasItems = NO;
@@ -1552,6 +1560,10 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 }
 
 #pragma mark - Actions
+
+- (void)backActionClick {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)actionButtonPressed:(id)sender {
 
