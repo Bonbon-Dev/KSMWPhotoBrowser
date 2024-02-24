@@ -234,11 +234,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     }
     
     // back button
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *backIcon = [UIImage imageNamed:@"MWPhotoBrowser.bundle/UIBarButtonItemBack"];
-    [backButton setBackgroundImage:backIcon forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(backActionClick) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBackButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    UIImage *backIcon = [[UIImage imageNamed:@"MWPhotoBrowser.bundle/UIBarButtonItemBack"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *leftBackButton = [[UIBarButtonItem alloc] initWithImage:backIcon style:UIBarButtonItemStylePlain target:self action:@selector(backActionClick)];
     self.navigationItem.leftBarButtonItem = leftBackButton;
 
     // Toolbar items
